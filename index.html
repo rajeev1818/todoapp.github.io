@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="bg-container">
+        <div class="head-section">
+            <h1 class="top-heading">
+                TODOS
+            </h1>
+        </div>
+        <div class="">
+            <div>
+                <div class="card-by-search">
+                    <h1 class="card-by-search-heading">Get Todo By Property</h1>
+                    <form id="searchForm">
+                        <div class="form-element">
+                          <label for="category" class="label">Category</label>
+                          <select id="category" class="input-element">
+                            <option value="WORK">WORK</option>
+                            <option value="HOME">HOME</option>
+                            <option value="LEARNING">LEARNING</option>
+                            <option value="NONE" selected>NONE</option>
+                          </select>
+                        </div>
+                        <div class="form-element">
+                          <label for="priority" class="label">Priority</label>
+                          <select id="priority" class="input-element">
+                            <option value="HIGH">HIGH</option>
+                            <option value="MEDIUM">MEDIUM</option>
+                            <option value="LOW">LOW</option>
+                            <option value="NONE" selected>NONE</option>
+                          </select>
+                        </div>
+                        <div class="form-element">
+                            <label for="status" class="label">Status</label>
+                            <select id="status" class="input-element">
+                              <option value="TO DO">TO DO</option>
+                              <option value="IN PROGRESS">IN PROGRESS</option>
+                              <option value="DONE">DONE</option>
+                              <option value="NONE" selected>NONE</option>
+                            </select>
+                        </div>
+                        <div class="form-element">
+                            <label for="searchText" class="label">Search By Todo Text</label>
+                            <input type="text" class="input-element" id="searchText">
+                        </div>
+                        <button type="submit" class="submit-button" id="submitByQuery">Get Todo</button>
+                    </form>
+                </div>
+                <div class="search-result">
+                    <ul class="todo-items-container" id="todoItemsContainer">
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div>
+                <div class="card-by-search">
+                    <h1 class="card-by-search-heading">Get Todo By Id</h1>
+                    <form>
+                        <div class="form-element">
+                            <label for="todoId" class="label">Todo Id</label>
+                            <input type="text" class="input-element" id="todoId">
+                            <p class="err-msg" id="errMsg"></p>
+                        </div>
+                        <button type="submit" class="submit-button" id="submitById">Get Todo</button>
+                    </form>
+                </div>
+                <div class="search-result">
+                    <ul class="todo-items-container" id="singleTodoItemsContainer">
+
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="card-by-search">
+                    <h1 class="card-by-search-heading">Get Todo By Due Date</h1>
+                    <form >                    
+                        <div class="form-element">
+                            <label for="dateTime" class="label">Search By Todo Text</label>
+                            <input type="date" placeholder="dd-mm-yyyy" value="date" id="dateTime">
+                            <p class="date-error" id="dateErr"></p>
+                        </div>
+                        <button type="submit" class="submit-button" id="dueDateSubmit">Get Todos</button>
+                    </form>
+                </div>
+                <div class="search-result">
+                    <ul class="todo-items-container" id="dateTodoItemsContainer">
+
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="card-by-search">
+                    <h1 class="card-by-search-heading">Create Todos</h1>
+                    <form id="postForm">
+                        <div class="form-element">
+                            <label for="todoInputId" class="label">Id</label>
+                            <input type="text" class="input-element" id="todoInputId">
+                            <p class="create-error" id="idCreateErr"></p>
+                        </div>
+                        <div class="form-element">
+                          <label for="createCategory" class="label">Category</label>
+                          <select id="createCategory" class="input-element">
+                            <option value="WORK">WORK</option>
+                            <option value="HOME">HOME</option>
+                            <option value="LEARNING">LEARNING</option>
+                            
+                          </select>
+                        </div>
+                        <div class="form-element">
+                          <label for="createPriority" class="label">Priority</label>
+                          <select id="createPriority" class="input-element">
+                            <option value="HIGH">HIGH</option>
+                            <option value="MEDIUM">MEDIUM</option>
+                            <option value="LOW">LOW</option>
+                            
+                          </select>
+                        </div>
+                        <div class="form-element">
+                            <label for="createStatus" class="label">Status</label>
+                            <select id="createStatus" class="input-element">
+                              <option value="TO DO">TO DO</option>
+                              <option value="IN PROGRESS">IN PROGRESS</option>
+                              <option value="DONE">DONE</option>
+                              
+                            </select>
+                        </div>
+                        <div class="form-element">
+                            <label for="todoText" class="label">Todo</label>
+                            <input type="text" class="input-element" id="todoText">
+                            <p class="create-error" id="textErr"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="postDateTime" class="label">Due Date</label>
+                            <input type="date" placeholder="dd-mm-yyyy" value="date" id="postDateTime">
+                            <p class="create-error" id="createDateErr"></p>
+                        </div>
+                        <button type="submit" class="submit-button" id="createTodo">Create Todo</button>
+                    </form>
+                </div>
+                <div class="searchResult" id="todoAddResult"></div>
+            </div>
+            <div>
+                <div class="card-by-search">
+                    <h1 class="card-by-search-heading">Update Todo</h1>
+
+                    <div class="update-part">
+                        <div class="form-element">
+                            <label for="formUpdateId" class="label">Id</label>
+                            <input type="text" class="input-element" id="formUpdateId">
+                            <p class="error-message" id="categoryUpdateId"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="updateCategory" class="label">Category</label>
+                            <select id="updateCategory" class="input-element">
+                              <option value="WORK">WORK</option>
+                              <option value="HOME">HOME</option>
+                              <option value="LEARNING">LEARNING</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="update-button" id="categoryButton">Update Category</button>
+                        <div id="categoryUpdateResult"></div>
+
+                    </div>
+                        
+                    <div class="update-part">
+                        <div class="form-element">
+                            <label for="priorityUpdateId" class="label">Id</label>
+                            <input type="text" class="input-element" id="priorityUpdateId">
+                            <p class="error-message" id="priorityUpdId"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="updatePriority" class="label">Priority</label>
+                            <select id="updatePriority" class="input-element">
+                              <option value="HIGH">HIGH</option>
+                              <option value="MEDIUM">MEDIUM</option>
+                              <option value="LOW">LOW</option>
+                              
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="update-button" id="priorityButton">Update Priority</button>
+                        <div id="priorityUpdateResult"></div>
+                    </div>
+
+                    <div class="update-part">
+                        <div class="form-element">
+                            <label for="statusId" class="label">Id</label>
+                            <input type="text" class="input-element" id="statusId">
+                            <p class="error-message" id="statusUpdateId"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="updateStatus" class="label">Status</label>
+                            <select id="updateStatus" class="input-element">
+                              <option value="TO DO">TO DO</option>
+                              <option value="IN PROGRESS">IN PROGRESS</option>
+                              <option value="DONE">DONE</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="update-button" id="statusButton">Update Status</button>
+                        <div id="statusResult"></div>
+                        
+
+                    </div>
+
+                    <div class="update-part">
+                        <div class="form-element">
+                            <label for="textId" class="label">Id</label>
+                            <input type="text" class="input-element" id="textId">
+                            <p class="error-message" id="textUpdateId"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="updateText" class="label">Todo</label>
+                            <input type="text" class="input-element" id="updateText">
+                            <p class="error-message" id="textUpdateErr"></p>
+                        </div>
+                        
+                        <button type="submit" class="update-button" id="todoButton">Update Todo</button>
+                        <div id="todoResult"></div>
+
+                    </div>
+
+                    <div class="update-part">
+                        <div class="form-element">
+                            <label for="dateId" class="label">Id</label>
+                            <input type="text" class="input-element" id="dateId">
+                            <p class="error-message" id="dateUpdateId"></p>
+                        </div>
+                        <div class="form-element">
+                            <label for="updateDateTime" class="label">Due Date</label>
+                            <input type="date" placeholder="dd-mm-yyyy" value="date" id="updateDateTime">
+                            <p class="error-message" id="dateUpdateErr"></p>
+                        </div>
+                        
+                        <button type="submit" class="update-button" id="dateUpdate">Update Due Date</button>
+                        <div id="dateUpdateRes" ></div>
+
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="./response.js"></script>
+</body>
+</html>
