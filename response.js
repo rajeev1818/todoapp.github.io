@@ -108,6 +108,8 @@ function showResult(data){
   dateUpdateRes.textContent="";
   categoryUpdateResult.classList.remove("success");
   categoryUpdateResult.textContent="";
+  todoItemsContainer.classList.remove("success");
+  todoItemsContainer.textContent="";
   if(data.length===0){
     
     todoItemsContainer.classList.add("success");
@@ -340,7 +342,8 @@ function showResult2(data){
   dateUpdateRes.textContent="";
   categoryUpdateResult.classList.remove("success");
   categoryUpdateResult.textContent="";
-
+  singleTodoItemsContainer.classList.remove("success");
+    singleTodoItemsContainer.textContent="";
   let {value}=data;
   if(value!==undefined){
     
@@ -523,6 +526,8 @@ function showResult3(data){
   dateUpdateRes.textContent="";
   categoryUpdateResult.classList.remove("success");
   categoryUpdateResult.textContent="";
+  dateTodoItemsContainer.classList.remove("success");
+  dateTodoItemsContainer.textContent="";
   if(data.length===0){
     
     dateTodoItemsContainer.classList.add("success");
